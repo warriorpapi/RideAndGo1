@@ -1,0 +1,38 @@
+
+<ion-content>
+    <ion-segment (ionChange)="filtrarPorComuna($event.detail.value)" value="all">
+      <ion-segment-button value="all">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="La Florida">
+        <ion-label>La Florida</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Puente Alto">
+        <ion-label>Puente Alto</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Pirque">
+        <ion-label>Pirque</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Otros">
+        <ion-label>Otros</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  
+    <div class="grid">
+      <ion-card *ngFor="let viaje of filteredViajes" [attr.data-groups]="viaje.comuna">
+        <img [src]="viaje.foto" alt="{{ viaje.nombre }}" width="500px" height="200px" style="object-fit: cover;"/>
+        <ion-card-content>
+          <h2>{{ viaje.nombre }}</h2>
+          <p>Comuna: {{ viaje.comuna }}</p>
+          <ion-button fill="primary" (click)="tomarViaje(viaje)">Tomar viaje</ion-button> 
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+
+
+
+  
+  
+  
+  

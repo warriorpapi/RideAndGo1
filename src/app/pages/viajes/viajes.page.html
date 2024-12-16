@@ -1,0 +1,215 @@
+<ion-content>
+  <!-- Cabecera -->
+  <ion-grid class="main-header">
+    <div align="center">
+      <ion-avatar>
+        <img src="assets/imgs/IconCar.jpeg" alt="Icono de la app">
+      </ion-avatar>
+      <ion-label class="tituloRegistro">
+        <h1>Viajes</h1>
+      </ion-label>
+    </div>
+  </ion-grid>
+<!-- Tarjeta para mostrar el precio del dólar -->
+<ion-row class="ion-justify-content-center" style="margin-top: 20px;">
+  <ion-col size="12" class="ion-text-center">
+    <ion-card class="dolar-info">
+      <ion-card-header>
+        <ion-card-title>
+          <h2>{{dolar?.nombre}} ({{dolar?.moneda}})</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="precio-dolar">
+          <ion-icon name="cash" style="font-size: 40px; color: #fff;"></ion-icon>
+          <h3 style="color: #fff; font-size: 2em;">${{dolar?.venta}}</h3>
+          <p style="color: #fff;">Última actualización: {{dolar?.fechaActualizacion | date: 'short'}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+<!-- Tarjeta para mostrar el clima -->
+<ion-row class="ion-justify-content-center" style="margin-top: 20px;">
+  <ion-col size="12" class="ion-text-center">
+    <ion-card class="clima-info">
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Clima en {{ clima?.Estacion }}</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="clima-info">
+          <h3 style="font-size: 2em;">{{ clima?.Temp }}°C</h3>
+          <p>Humedad: {{ clima?.Humedad }}%</p>
+          <p>Estado: {{ clima?.Estado }}</p>
+          <p>Última actualización: {{ clima?.HoraUpdate }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+  
+  <ion-col size="12" class="ion-text-center"> 
+    <ion-button (click)="refrescarViajes()"color="dark"  shape="round">Refrescar Viajes</ion-button>
+  </ion-col>
+  
+
+  <!-- Botones para manejar los viajes -->
+  <ion-row class="button-row" justify-content-center style="margin-top: 20px;">
+    <ion-col size="6" class="ion-text-center">
+      <ion-button (click)="mostrarViajesDisponibles()" color="secondary" expand="full" shape="round">Viajes Disponibles</ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center">
+      <ion-button (click)="mostrarViajesTomados()" color="secondary" expand="full" shape="round">Viajes Tomados</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!-- Lista de viajes -->
+  <ion-list *ngIf="mostrarListaViajesDisponibles">
+    <h3 class="lista-titulo">Viajes Disponibles</h3>
+    <div *ngIf="mapVisible" id="mapaVista" style="height: 300px; margin-top: 20px;"></div>
+    <ion-item *ngFor="let viaje of viajes">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ viaje.getDestino() }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Tiempo:</strong> {{ viaje.getDuracion() }} min</p>
+          <p><strong>Distancia:</strong> {{ viaje.getDistancia() }} km</p>
+          <p><strong>Hora de Salida:</strong> {{ formatFechaHora( viaje.getHoraSalida()) }}</p>
+          <p><strong>Cupos:</strong> {{ viaje.getCupos()  }} personas</p>
+          <p><strong>Coste:</strong> ${{ viaje.getCoste() }}</p>
+          <p>
+            <strong>Estado:</strong>
+            <span [ngClass]="{
+              'estado-en-curso': viaje.getEstado() === 'En Curso',
+              'estado-completado': viaje.getEstado() === 'Completado',
+              'estado-cancelado': viaje.getEstado() === 'Cancelado',
+              'estado-pendiente': viaje.getEstado() === 'Pendiente'
+            }">
+              {{ viaje.getEstado() }}
+            </span>
+          </p>
+          <div class="button-container">
+            <ion-button (click)="verDetalle(viaje)" color="warning" shape="round" expand="full">Ver Ruta</ion-button>
+            <ion-button (click)="tomarViaje(viaje)" color="success" shape="round" expand="full">Tomar Viaje</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list *ngIf="mostrarListaViajesTomados">
+    <h3 class="lista-titulo">Viajes Tomados</h3>
+  
+    <div *ngIf="mapVisible" id="mapaVista" style="height: 300px; margin-top: 20px;"></div>
+  
+    <ion-item *ngFor="let viaje of viajesTomados">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ viaje.getDestino() }}</ion-card-title>
+        </ion-card-header>
+  
+        <ion-card-content>
+          <p><strong>Tiempo:</strong> {{ viaje.getDuracion() }} min</p>
+          <p><strong>Distancia:</strong> {{ viaje.getDistancia() }} km</p>
+          <p><strong>Hora de Salida:</strong> {{ formatFechaHora(viaje.getHoraSalida()) }}</p>
+          <p><strong>Cupos:</strong> {{ viaje.getCupos() }} personas</p>
+          <p><strong>Coste:</strong> ${{ viaje.getCoste() }}</p>
+  
+          <p>
+            <strong>Estado:</strong>
+            <span [ngClass]="{
+              'estado-en-curso': viaje.getEstado() === 'En Curso',
+              'estado-completado': viaje.getEstado() === 'Completado',
+              'estado-cancelado': viaje.getEstado() === 'Cancelado',
+              'estado-pendiente': viaje.getEstado() === 'Pendiente'
+            }">
+              {{ viaje.getEstado() }}
+            </span>
+          </p>
+  
+          <div class="button-container">
+            <ion-button (click)="verDetalle(viaje)" color="warning" shape="round" expand="full">Ver Ruta</ion-button>
+            <ion-button *ngIf="viaje.getEstado() === 'Pendiente'" (click)="bajarseViaje(viaje)" color="danger" shape="round" expand="full">Bajarse</ion-button>
+            <ion-button *ngIf="viaje.getEstado() === 'En Curso'" (click)="llegarADestino(viaje)" color="success" shape="round" expand="full">Marcar como Llegado</ion-button>
+          </div>
+  
+          <!-- Espacio para mostrar el código QR -->
+          <div class="qr-placeholder">
+            <qr-code [value]="qrText" size="250" errorCorrectionLevel="M"></qr-code>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  
+  
+<!-- Sección para los Viajes Creados -->
+<div *ngIf="viajesCreados">
+  <h3 class="lista-titulo">Viajes Creados</h3>
+  <ion-list>
+    <ion-item *ngFor="let viaje of viajesCreados">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ viaje.getDestino() }}</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <p><strong>Tiempo:</strong> {{ viaje.getDuracion() }} min</p>
+          <p><strong>Distancia:</strong> {{ viaje.getDistancia() }} km</p>
+          <p><strong>Hora de Salida:</strong> {{ formatFechaHora(viaje.getHoraSalida()) }}</p>
+          <p><strong>Cupos:</strong> {{ viaje.getCupos() }} personas</p>
+          <p><strong>Coste:</strong> ${{ viaje.getCoste() }}</p>
+          <p>
+            <strong>Estado:</strong>
+            <span [ngClass]="{
+              'estado-en-curso': viaje.getEstado() === 'En Curso',
+              'estado-completado': viaje.getEstado() === 'Completado',
+              'estado-cancelado': viaje.getEstado() === 'Cancelado',
+              'estado-pendiente': viaje.getEstado() === 'Pendiente'
+            }">
+              {{ viaje.getEstado() }}
+            </span>
+          </p>
+  
+          <div class="button-container">
+            <ion-button (click)="verDetalle(viaje)" color="warning" shape="round" expand="full">Ver Ruta</ion-button>
+            <ion-button (click)="eliminarViaje(viaje)" color="danger" shape="round" expand="full">Eliminar</ion-button>
+            <ion-button (click)="editar(viaje)" color="dark" shape="round" expand="full">Editar</ion-button>
+            
+            <!-- Nuevo botón Iniciar Viaje -->
+            <ion-button (click)="cambiarEstado(viaje)" color="primary" shape="round" expand="full">Cambiar Estado</ion-button>
+          </div>
+
+         <!-- Espacio para mostrar el código QR o botón para escanear -->
+         <div class="qr-placeholder" style="margin-top: 20px; text-align: center; height: 150px; border: 1px dashed #ccc;">
+          <p>Escanea el código QR de tu viaje:</p>
+
+          <!-- Botón para abrir el escáner de QR -->
+          <ion-button (click)="scanQRCode()" color="secondary" expand="full" shape="round">
+            <ion-icon name="qr-code-outline"></ion-icon> Escanear QR
+          </ion-button>
+
+          <ion-item class="result" *ngIf="scanResult" lines="none"> 
+              <p>Scan</p>
+              <div>{{scanResult}}</div>
+              <div>{{barcodes}}</div>
+          </ion-item>
+        </div>
+        
+
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+</ion-content>
+<ion-button color="secondary" class="boton-agregar" shape="round" [routerLink]="['/home/inicio']">
+  <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+</ion-button>

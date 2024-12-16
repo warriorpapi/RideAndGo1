@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="circleBase type2 circle1"></div> 
+  <div class="circleBase type1"></div> 
+  <div class="circleBase type2 circle2"></div>
+
+  <ion-label class="MensajeBienvenida">
+    <ion-text color="light">Bienvenido a,</ion-text>
+
+    <p><img src="../../assets/imgs/nexxus.png" alt="Logo" class="logo"></p>
+
+  </ion-label>
+    <form (ngSubmit)="login()">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+        
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="mail-outline" slot="end" color="primary"></ion-icon>
+          <ion-input [(ngModel)]="email" type="email" name="email" placeholder="Email" required></ion-input>
+        </ion-item>
+  
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="lock-closed-outline" slot="end" color="primary"></ion-icon>
+          <ion-input [(ngModel)]="password" type="password" name="password" placeholder="contraseña" required></ion-input>
+        </ion-item>
+  
+        <ion-row class="ion-margin-vertical">
+          <ion-col size="6" class="alignItems">
+            <div align="left">
+              <ion-checkbox></ion-checkbox>
+              <ion-note>Recordarme</ion-note>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div align="right">
+              <ion-note routerLink="/recuperar-contrasena">Olvidaste tu contraseña?</ion-note>
+            </div>
+          </ion-col>
+        </ion-row>
+  
+        <ion-button expand="full" type="submit" color="secondary" class="ion-margin-top" shape="round">
+          Ingresar
+        </ion-button>
+  
+        <p>
+          <ion-note>No tienes cuenta? <ion-text color="primary" routerLink="/registro">Regístrate</ion-text></ion-note>
+        </p>
+      </ion-list>
+    </form>
+  <div class="circleBase type2 circle3"></div> 
+  <div class="circleBase type3"></div> 
+  <div class="circleBase type2 circle4"></div>
+
+</ion-content>

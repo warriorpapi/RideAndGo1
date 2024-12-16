@@ -1,0 +1,65 @@
+<ion-content padding>
+  <ion-content>
+  <div class="circleBase type2 circle1"></div> 
+  <div class="circleBase type1"></div> 
+  <div class="circleBase type2 circle2"></div>
+
+  <ion-label class="MensajeBienvenida">
+    <ion-text color="light"></ion-text>
+    <p><img src="../../assets/imgs/nexxus.png" alt="Logo" class="logo"></p>
+  </ion-label>
+  
+  <ion-label class="tituloAdmin">
+    <h1>Administra tu viaje</h1>
+  </ion-label>
+  <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+    <div id="mapa" style="height: 300px; margin-top: 20px;"></div>
+  <!-- Campo para el destino -->
+  <ion-item>
+    <ion-icon name="compass-outline" slot="end" color="primary"></ion-icon>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input [(ngModel)]="destino" placeholder="Ej. Playa, Montañas..." readonly></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="disc-outline" slot="end" color="primary"></ion-icon>
+    <ion-label position="floating">Distancia (KM)</ion-label>
+    <ion-input type="number" [(ngModel)]="distancia_metros" readonly></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="timer-outline" slot="end" color="primary"></ion-icon>
+    <ion-label position="floating">Tiempo (Minutos)</ion-label>
+    <ion-input type="number" [(ngModel)]="tiempo_segundos" readonly></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="cash-outline" slot="end" color="primary"></ion-icon>
+    <ion-label position="floating">Coste</ion-label>
+    <ion-input type="number" [(ngModel)]="coste"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="time-outline" slot="end" color="primary"></ion-icon>
+    <ion-label position="floating">Hora de Salida</ion-label>
+    <br>
+    <ion-datetime [(ngModel)]="horaSalida" displayFormat="HH:mm" placeholder="Selecciona la hora" presentation="time"></ion-datetime>
+  </ion-item>
+
+  <!-- Campo para la capacidad con límite de 4 -->
+  <!-- Campo para la capacidad usando ion-select -->
+  <ion-item>
+    <ion-icon name="people-outline" slot="end" color="primary"></ion-icon>
+    <ion-label>Capacidad</ion-label>
+    <ion-select [(ngModel)]="capacidad" placeholder="Selecciona capacidad">
+      <ion-select-option value="1">1</ion-select-option>
+      <ion-select-option value="2">2</ion-select-option>
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="4">4</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="modificar(idViaje)" expand="full" color="dark" class="ion-margin-top" shape="round">Editar</ion-button>
+</ion-list>  
+ 
+
+</ion-content>

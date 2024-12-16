@@ -1,0 +1,121 @@
+
+<ion-content>
+  <div class="circleBase type2 circle1"></div> 
+  <div class="circleBase type1"></div> 
+  <div class="circleBase type2 circle2"></div>
+
+  <ion-label class="MensajeBienvenida">
+    <ion-text color="light"></ion-text>
+    <p><img src="../../assets/imgs/nexxus.png" alt="Logo" class="logo"></p>
+  </ion-label>
+  
+  <ion-label class="tituloAdmin">
+    <h1>Administración de Usuarios</h1>
+  </ion-label>
+  <form [formGroup]="personaForm" (ngSubmit)="registrar()">
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="grid-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="rut" type="text" labelPlacement="stacked" label="RUT" placeholder="RUT"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="person-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="usuario" type="text" labelPlacement="stacked" label="Usuario" placeholder="Nombre de usuario"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="mail-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="email" type="email" labelPlacement="stacked" label="Email" placeholder="Correo electrónico"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="key-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="contrasena" type="password" labelPlacement="stacked" label="Contraseña" placeholder="Contraseña"></ion-input>
+        <div *ngIf="personaForm.errors?.['passwordMismatch']" class="error-message">
+          Las contraseñas no coinciden.
+        </div>
+      </ion-item>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="key-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="contrasena_conf" type="password" labelPlacement="stacked" label="Repetir contraseña" placeholder="Confirmar contraseña"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="calendar-outline" slot="end" color="primary"></ion-icon>
+        <ion-input formControlName="fecha_nacimiento" type="date" labelPlacement="stacked" label="Fecha nacimiento" placeholder="Ingrese fecha de nacimiento"></ion-input>
+        <div *ngIf="personaForm.get('fecha_nacimiento')?.errors?.['edadInvalida']" class="error-message">
+          Debes tener al menos 18 años.
+        </div>
+      </ion-item>
+      <ion-item>
+
+        <ion-icon name="settings-outline" slot="end" color="primary"></ion-icon>
+        <ion-label>¿Tiene vehículo?</ion-label>
+        <ion-checkbox formControlName="tieneVehiculo" (ionChange)="toggleFormulario()"></ion-checkbox>
+      </ion-item>
+
+      <div *ngIf="personaForm.get('tieneVehiculo')?.value">
+        <ion-card class="vehicle-card"> 
+          <ion-item>
+            <ion-icon name="document-outline" slot="end" color="primary"></ion-icon>
+            <ion-input formControlName="patente" type="text" labelPlacement="stacked" label="Patente" placeholder="Ingrese patente del vehículo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="car-outline" slot="end" color="primary"></ion-icon>
+            <ion-input formControlName="marca" type="text" labelPlacement="stacked" label="Marca del auto" placeholder="Ingrese marca del vehículo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="pricetags-outline" slot="end" color="primary"></ion-icon>
+            <ion-input formControlName="modelo" type="text" labelPlacement="stacked" label="Modelo del auto" placeholder="Ingrese modelo del vehículo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="color-fill-outline" slot="end" color="primary"></ion-icon>
+            <ion-input formControlName="color" type="text" labelPlacement="stacked" label="Color del auto" placeholder="Ingrese color del vehículo"></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-item>
+          <ion-icon name="people-outline" slot="end" color="primary"></ion-icon>
+          <ion-label>Capacidad (plazas)</ion-label>
+          <ion-select formControlName="plazas" label="Selecciona el número de plazas" interface="action-sheet">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        
+      </div>
+
+      <div *ngIf="!editar">
+        <ion-button [disabled]="personaForm.invalid" type="submit" expand="full" color="secondary" 
+        class="ion-margin-top" shape="round">REGISTRAR</ion-button>
+      </div>
+
+      <div *ngIf="editar">
+        <ion-button (click)="modificar()" expand="full" color="dark" class="ion-margin-top" shape="round">Editar</ion-button>
+      </div>
+      <ion-button (click)="limpiar()" expand="full" color="secondary" class="ion-margin-top" shape="round">LIMPIAR</ion-button>
+    </ion-list>  
+  </form>
+
+
+  <ion-list> 
+    <ion-item-sliding *ngFor="let usuario of usuarios">
+      <ion-item-options side="start">
+        <ion-item-option (click)="buscar(usuario.getRut())" color="warning">Editar</ion-item-option>
+      </ion-item-options>
+
+      <ion-item>{{usuario.getRut()}} - {{usuario.getUsuario()}}</ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="eliminar(usuario.getRut()); limpiar()" color="danger">Eliminar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-button (click)="volverAlPanel()" expand="full" color="secondary" class="ion-margin-top" shape="round">Volver</ion-button>
+  </ion-list>
+</ion-content>

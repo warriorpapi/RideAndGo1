@@ -1,0 +1,125 @@
+<ion-content [fullscreen]="true">
+  <div class="circleBase type2 circle1"></div> 
+  <div class="circleBase type1"></div> 
+  <div class="circleBase type2 circle2"></div>
+
+  <ion-label class="MensajeBienvenida">
+    <ion-text color="light">Bienvenido a,</ion-text>
+    <p><img src="../../assets/imgs/nexxus.png" alt="Logo" class="logo"></p>
+  </ion-label>
+  
+    <ion-label class="tituloRegistro">
+      <h1>Registro de Usuario</h1>
+    </ion-label>
+    <form [formGroup]="personaForm" (ngSubmit)="registrar()">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="grid-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="rut" type="text" labelPlacement="stacked" label="RUT" placeholder="RUT"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="person-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="usuario" type="text" labelPlacement="stacked" label="Usuario" placeholder="Nombre de usuario"></ion-input>
+        </ion-item>
+        
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="mail-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="email" type="email" labelPlacement="stacked" label="Email" placeholder="Correo electronico"></ion-input>
+        </ion-item>
+        
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="key-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="contrasena" type="password" labelPlacement="stacked" label="Contraseña" placeholder="Contraseña"></ion-input>
+          <div *ngIf="personaForm.errors?.['passwordMismatch']" class="error-message">
+            Las contraseñas no coinciden.
+          </div>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="key-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="contrasena_conf" type="password" labelPlacement="stacked" label="Repetir contraseña" placeholder="Confirmar contraseña"></ion-input>
+        </ion-item> 
+        
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="calendar-outline" slot="end" color="primary"></ion-icon>
+          <ion-input formControlName="fecha_nacimiento" type="date" labelPlacement="stacked" label="Fecha nacimiento" placeholder="Ingrese fecha de nacimiento"></ion-input>
+          <div *ngIf="personaForm.get('fecha_nacimiento')?.errors?.['edadInvalida']" class="error-message">
+            Debes tener al menos 18 años.
+          </div>
+        </ion-item>
+        
+        <ion-item>
+          <ion-icon name="settings-outline" slot="end" color="primary"></ion-icon>
+          <ion-label>¿Tiene vehículo?</ion-label>
+          <ion-checkbox formControlName="tieneVehiculo" (ionChange)="toggleFormulario()"></ion-checkbox>
+        </ion-item>
+
+        <div *ngIf="personaForm.get('tieneVehiculo')?.value">
+          <ion-card class="vehicle-card"> 
+
+            <ion-item>
+              <ion-icon name="document-outline" slot="end" color="primary"></ion-icon>
+              <ion-input formControlName="patente" type="text" labelPlacement="stacked" label="Patente" placeholder="AB 14 CD"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="car-outline" slot="end" color="primary"></ion-icon>
+              <ion-input formControlName="marca" type="text" labelPlacement="stacked" label="Marca del auto" placeholder="Ingrese marca del vehiculo"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="pricetags-outline" slot="end" color="primary"></ion-icon>
+              <ion-input formControlName="modelo" type="text" labelPlacement="stacked" label="Modelo del auto" placeholder="Ingrese modelo del vehiculo"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="color-fill-outline" slot="end" color="primary"></ion-icon>
+              <ion-input formControlName="color" type="text" labelPlacement="stacked" label="Color del auto" placeholder="Ingrese color del vehiculo"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="people-outline" slot="end" color="primary"></ion-icon>
+              <ion-label>Capacidad (plazas)</ion-label>
+              <ion-select formControlName="plazas" label="Selecciona el número de plazas" interface="action-sheet">
+                <ion-select-option value="1">1</ion-select-option>  
+                <ion-select-option value="2">2</ion-select-option>
+                <ion-select-option value="3">3</ion-select-option>  
+                <ion-select-option value="4">4</ion-select-option>  
+              </ion-select>
+            </ion-item>
+
+          </ion-card>
+        </div>
+
+        <ion-item lines="none">
+          <ion-label>
+            Acepto las <a (click)="mostrarPoliticas()">políticas de uso</a>
+          </ion-label>
+          <ion-button 
+            fill="outline" 
+            color="primary" 
+            [color]="personaForm.get('aceptarPoliticas')?.value ? 'success' : 'medium'" 
+            (click)="toggleAceptarPoliticas()">
+            {{ personaForm.get('aceptarPoliticas')?.value ? 'Aceptado' : 'Aceptar' }}
+          </ion-button>
+        </ion-item>
+        
+        <div>
+          <ion-button *ngIf="!personaForm.get('tieneVehiculo')?.value" id="present-alert" [disabled]="personaForm.invalid" type="submit" expand="full" color="secondary" 
+          class="ion-margin-top" shape="round">REGISTRAR</ion-button>
+          
+          <ion-button *ngIf="personaForm.get('tieneVehiculo')?.value" [disabled]="personaForm.invalid" type="submit" expand="full" color="secondary" class="ion-margin-top" shape="round">
+            REGISTRAR CON VEHÍCULO</ion-button>
+        </div>
+        <p>
+          <ion-note>¿Ya tienes una cuenta?<ion-text color="primary" routerLink="/login"> Iniciar Sesión</ion-text></ion-note>
+        </p>
+      </ion-list>
+    </form>
+    <div class="circleBase type2 circle3"></div> 
+    <div class="circleBase type3"></div> 
+    <div class="circleBase type2 circle4"></div>
+</ion-content>
+

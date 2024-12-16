@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+
+  <div class="circleBase type2 circle1"></div> 
+  <div class="circleBase type1"></div> 
+  <div class="circleBase type2 circle2"></div>
+  <ion-label class="MensajeBienvenida">
+    <ion-text color="light">Bienvenido a,</ion-text>
+
+    <p><img src="../../assets/imgs/nexxus.png" alt="Logo" class="logo"></p>
+
+  </ion-label>
+  <ion-label class="tituloRecuperar">
+    <h1>Ingresa tu email</h1>
+  </ion-label>
+
+
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="mail-outline" slot="end" color="primary"></ion-icon>
+        <ion-input type="email" [(ngModel)]="correo" name="correo" placeholder="Ingresa tu email" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit" (click)="recuperarContrasena()" [disabled]="!correo || !isEmailValid()" color="secondary" class="ion-margin-top" shape="round">Enviar</ion-button>
+      <p>
+        <ion-note routerLink="/login">Volver</ion-note>
+      </p>
+    </ion-list>
+  <div class="circleBase type2 circle3"></div> 
+  <div class="circleBase type3"></div> 
+  <div class="circleBase type2 circle4"></div>
+</ion-content>

@@ -1,0 +1,155 @@
+.circleBase {
+  border-radius: 20%;
+}
+
+.type1 {
+  position: absolute;
+  width: 750px;
+  height: 280px;
+  background: linear-gradient(90deg,#3b70cc 0%, #3b70cc);
+  box-shadow: 0px 1px 10px rgba(65, 190, 240, 0.5);
+  top: -100px;
+  left: -100px;
+}
+
+.type2 {
+
+  width: 100px;
+  height: 100px;
+  background: #000;
+}
+
+.circle1{
+  margin-left: 180px;
+  margin-top: 50px;
+}
+
+.circle2{
+  position: absolute;
+  top: -40px;
+  left: -30px;
+}
+
+.type3 {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(90deg,#3b70cc 0%, #3b70cc);
+  box-shadow: 0px 1px 10px rgba(65, 190, 240, 0.5);
+  top: -50px;
+  left: 375px;
+}
+
+.circle3{
+  position: absolute;
+  margin-left: 457px;
+  margin-top: -35px;
+}
+
+.circle4{
+  position: relative;
+  top: -120px;
+  left: 345px;
+}
+
+.MensajeBienvenida{
+  position: absolute;
+  top: 70px;
+  left: 50px;
+  p {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 5px;
+  }
+}
+
+ion-list{
+  background: transparent;
+  transform: translateY(20vh);
+  ion-item{
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+  }
+  ion-row{
+    margin-bottom: 5vh;
+  }
+  ion-buttom{
+    width: 30vh;
+    margin: auto;
+  }
+  .alignItems {
+    ion-checkbox, ion-note {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    ion-checkbox{
+      margin-right: 1vw;
+      --size: 1.1rem ;
+    }
+  }
+  .signup{
+    margin-top: 5vh;
+    font-size: 0.8rem;
+  }
+  ion-col{
+    ion-note{
+      font-size: 0.85rem;
+    }
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120vh; /* Asegura que ocupe toda la pantalla */
+}
+
+.logo {
+  width: 350px; 
+}
+
+.tituloRegistro {
+  position: absolute;
+  top: 290px;
+  left: 105px;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+}
+
+.utilidades-recuadro {
+  background-color: #f8f9fa; /* Color de fondo */
+  border: 1px solid #ccc; /* Borde del recuadro */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 16px; /* Espaciado interno */
+  margin: 200px 20px 30px; /* Margen alrededor del recuadro */
+  
+}
+
+.utilidades-recuadro h3 {
+  margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.utilidades-recuadro ul {
+  list-style-type: none; /* Sin viñetas */
+  padding: 0; /* Sin padding */
+}
+
+.utilidades-recuadro li {
+  margin-bottom: 5px; /* Espacio entre elementos de la lista */
+}
+
+#map_html{
+  height: 100vh;
+  width: 100%;
+  //margin: 10% 10% 10% 10%;
+}
+
+
+
+
+
+  

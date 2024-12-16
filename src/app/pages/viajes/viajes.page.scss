@@ -1,0 +1,217 @@
+#mapaVista{
+    height: 100vh;
+    width: 100%;
+    //margin: 10% 10% 10% 10%;
+  }
+
+.boton-agregar {
+  position: fixed;
+  bottom: 16px;
+  right: 16px; 
+  width: 45px; 
+  height: 45px;
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+ion-content {
+  * {
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  .main-header {
+      height: 26vh;
+      width: 115%;
+      background: linear-gradient(1000deg, var(--ion-color-secondary)0%, var(--ion-color-primary)100%);
+      box-shadow: 0 1px 10px var(--ion-color-dark);
+      border-radius: 0 0 33% 33%;
+      margin-left: -4.5vh;
+      margin-top: -5px;
+      div {
+          transform: translateY(2vh);
+          ion-avatar {
+              width: 18vh;
+              height: 18vh;
+              background: var(--ion-color-white);
+              margin-bottom: 5px;
+              border: 7px solid var(--ion-color-secondary);
+          }
+      } 
+  }
+  ion-row{
+      margin-top: -60px;
+      ion-col{
+          ion-item{
+              width: 94%;
+              margin:auto;
+              border: 1px solid var(--ion-color-light);
+              box-shadow: 1px var(--ion-color-dark);
+              border-radius: 5px;
+              ion-label{
+                  font-size: 1.8rem;
+                  font-weight: bold;
+                  p{
+                      font-size: 0.7rem;
+                  }
+              }
+              ion-icon{
+                  font-size: 3rem;
+              }
+          }
+      }
+  }
+  ion-list{
+      ion-item{
+          margin-top: 1vh;
+          ion-label{
+              font-size: 0.9rem;
+              p{
+                  margin-top: 5px;
+                  font-size: 1.2rem;
+                  font-weight: bold;
+              }
+          }
+      }
+  }
+}
+.tituloRegistro {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--ion-color-light);
+  }
+}
+ion-list {
+  margin: 0;
+  padding: 0;
+}
+
+ion-card {
+  margin: 10px 0;
+  background-color: #f9f9f9; 
+  border-radius: 10px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+ion-card-header {
+  background-color: #96a5c0; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+ion-card-header ion-card-title {
+  color: rgb(255, 255, 255); 
+}
+
+ion-card-title {
+  font-size: 1.5em;
+}
+
+ion-card-subtitle {
+  font-size: 1em; 
+  opacity: 1 ; 
+}
+
+ion-card-footer {
+  display: flex;
+  justify-content: space-between; 
+  padding: 10px; 
+}
+.lista-titulo {
+  text-align: center;
+  font-size: 1.5em;
+  color: #2b68d1;
+  margin: 15px 0;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lista-titulo {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #052357; 
+  padding: 10px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  margin-top: 20px; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+  
+
+.qr-placeholder {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* Ajustar la altura del espacio reservado */
+  border: 2px dashed #007bff; /* Borde de color azul para mejor visibilidad */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f7f7f7; /* Color de fondo suave */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+}
+
+.qr-placeholder qr-code {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 250px; /* Asegura que el QR no se expanda más allá del tamaño ideal */
+  height: auto;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+
+.estado-en-curso {
+  color: green;
+}
+
+.estado-completado {
+  color: blue;
+}
+
+.estado-cancelado {
+  color: red;
+}
+
+.estado-pendiente {
+  color: orange;
+}
+
+
+/* Estilo para el fondo negro del dólar */
+.dolar-info {
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  padding: 15px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo para el fondo negro del clima */
+.clima-info {
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  padding: 15px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo adicional para el contenido dentro de las tarjetas */
+.precio-dolar ion-icon {
+  font-size: 40px;
+  color: #fff; /* Asegura que el icono sea blanco */
+}
+
+.clima-info h3, .precio-dolar h3 {
+  color: white; /* Asegura que los encabezados sean blancos */
+}
+
+.clima-info p, .precio-dolar p {
+  color: white; /* Asegura que los párrafos sean blancos */
+}

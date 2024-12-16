@@ -1,0 +1,181 @@
+.icon-img{
+  width: 100px; 
+  height: 100px; 
+  object-fit: contain; 
+}
+
+.card { 
+  width: 50%; /* O el ancho que desees */
+  padding: 1.6rem 2rem;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2.5rem;
+  margin: 1.5rem auto; 
+  position: relative; 
+  top: 100px; /* Ajusta según sea necesario */
+
+  .card-content{
+    text-align: center;
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: .2rem;
+      color: #1d1d1d;
+    }
+
+    .sup {
+      font-size: 1 rem;
+      margin-right: 2px;
+    }
+  }
+
+  ion-buttons{
+    position: relative; 
+    margin-top: 1rem; 
+    display: flex;
+    justify-content: center;
+
+    ion-button{
+      --background: #4579bc;
+      font-weight: 700;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+
+      --padding-start: 0;
+      --padding-end: 0;
+      --padding-top: 0;
+      --padding-bottom: 0;
+    }
+  }
+}
+.card2 { 
+  width: 50%; 
+  padding: 1.6rem 2rem;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2.5rem;
+  margin: 1.5rem auto; 
+  position: relative; 
+  top: -90px; 
+
+  .card-content{
+    text-align: center;
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: .2rem;
+      color: #1d1d1d;
+    }
+
+    .sup {
+      font-size: 1 rem;
+      margin-right: 2px;
+    }
+  }
+
+  ion-buttons{
+    position: relative; 
+    margin-top: 1rem; 
+    display: flex;
+    justify-content: center;
+
+    ion-button{
+      --background: #4579bc;
+      font-weight: 700;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+
+      --padding-start: 0;
+      --padding-end: 0;
+      --padding-top: 0;
+      --padding-bottom: 0;
+    }
+  }
+}
+.MensajeBienvenida{
+  position: absolute;
+  top: 70px;
+  left: 50px;
+  p {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 5px;
+  }
+}
+
+ion-list{
+  background: transparent;
+  transform: translateY(20vh);
+  ion-item{
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+  }
+  ion-row{
+    margin-bottom: 5vh;
+  }
+  ion-buttom{
+    width: 30vh;
+    margin: auto;
+  }
+  .alignItems {
+    ion-checkbox, ion-note {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    ion-checkbox{
+      margin-right: 1vw;
+      --size: 1.1rem ;
+    }
+  }
+  .signup{
+    margin-top: 5vh;
+    font-size: 0.8rem;
+  }
+  ion-col{
+    ion-note{
+      font-size: 0.85rem;
+    }
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120vh; /* Asegura que ocupe toda la pantalla */
+}
+
+.logo {
+  width: 160px; 
+}
+
+.tituloAdmin {
+  position: absolute;
+  top: 50px;
+  left: 76px;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
