@@ -1,13 +1,12 @@
 export const environment = {
   production: true,
-  
   firebaseConfig: {
-    apiKey: "AIzaSyAUSf4AJFHYaFt9S_YYsgQT5QT-44XM28w",
-    authDomain: "rideandgo-8cf60.firebaseapp.com",
-    projectId: "rideandgo-8cf60",
-    storageBucket: "rideandgo-8cf60.firebasestorage.app",
-    messagingSenderId: "686958501986",
-    appId: "1:686958501986:web:61699e97f28a133580f13b"
+    apiKey: "AIzaSyD5i82Kh1WRZxhoDpy-ti3gXT0TVuslRl8",
+    authDomain: "nexxus-80f29.firebaseapp.com",
+    projectId: "nexxus-80f29",
+    storageBucket: "nexxus-80f29.firebasestorage.app",
+    messagingSenderId: "842534189784",
+    appId: "1:842534189784:web:be6b4e2cee3b9f1a9435ad"
   }
 
 };
