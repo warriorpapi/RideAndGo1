@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/Usuario';
 import { Vehiculo } from 'src/app/models/Vehiculo';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registro',

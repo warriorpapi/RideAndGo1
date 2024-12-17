@@ -44,38 +44,16 @@ Este proyecto es una aplicación desarrollada con el objetivo de ayudar a los es
 
 ---
 
-🌐 **O también puedes ingresar a la aplicación a través de este [https://nexxus-80f29.web.app/login](#)** para probarla directamente en tu dispositivo Movil.
-
-
-
-  <h2>👥 Colaboradores</h2>
+<h2>👥 Colaboradores</h2>
 <div style="text-align: center; display: flex; justify-content: center; gap: 20px;">
 
   <div>
-    <img src="src/assets/icon/momin.jfif" alt="Cristobal Roman" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;">
-    <p><strong>Cristobal Román</strong>: Desarrollo y gestión del proyecto.</p>
-    <p>📧 <a href="mailto:cr.roman@duocuc.cl">cr.roman@duocuc.cl</a></p>
-  </div>
-
-  <div>
-    <img src="src/assets/icon/renatoIcon.jfif" alt="Renato" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;">
-    <p><strong>Renato Ubilla</strong>: Diseño de la interfaz y experiencia de usuario.</p>
-    <p>📧 <a href="mailto:re.ubilla@duocuc.cl">re.ubilla@duocuc.cl</a></p>
+    <img src="src/assets/icon/momin.jfif" alt="Martin Guerrero" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;">
+    <p><strong>Martin Guerrero</strong></p>
+    <p>📧 <a href="mailto:mar.guerrero@duocuc.cl">mar.guerrero@duocuc.cl</a></p>
   </div>
 
 </div>
-
-## ❓ ¿Tienes dudas?
-
-En caso de cualquier duda o problema con nuestra aplicación, no dudes en contactarnos. Responderemos lo antes posible.
-
-📧 **Correo**: [re.Ubilla@duocuc.cl](mailto:re.Ubilla@duocuc.cl)
-
-
-
-## ✨ **¿Quieres colaborar?**
-
-Si deseas contribuir, no dudes en enviarnos un email. ¡Toda ayuda es bienvenida!
 
 
 
