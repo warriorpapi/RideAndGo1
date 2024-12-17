@@ -41,7 +41,7 @@ Este proyecto es una aplicación desarrollada con el objetivo de ayudar a los es
 <div style="text-align: center; display: flex; justify-content: center; gap: 20px;">
 
   <div>
-    <img src="src/assets/icon/momin.jfif" alt="Martin Guerrero" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;">
+    <img src="src/assets/imgs/logo.png" alt="Martin Guerrero" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;">
     <p><strong>Martin Guerrero</strong></p>
     <p>📧 <a href="mailto:mar.guerrero@duocuc.cl">mar.guerrero@duocuc.cl</a></p>
   </div>

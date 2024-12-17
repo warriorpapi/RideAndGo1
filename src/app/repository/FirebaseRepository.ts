@@ -15,7 +15,7 @@ export class FirebaseRepository implements UsuarioRepository {
 
   constructor(private firestore: AngularFirestore,private authService:AuthService) {
 
-    //this.insertarAdmin();
+    this.insertarAdmin();
   }
 
 
